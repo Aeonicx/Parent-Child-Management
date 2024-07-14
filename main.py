@@ -6,7 +6,8 @@ from authentication.routes import router as auth_router
 from apps.parent.routes import router as parent_router
 from apps.child.routes import router as child_router
 from fastapi.openapi.utils import get_openapi
-from common.scheduler import start_scheduler
+from fastapi.staticfiles import StaticFiles
+
 
 app = FastAPI()
 
@@ -45,6 +46,8 @@ app.include_router(auth_router, prefix=f"{prefix}")
 app.include_router(parent_router, prefix=f"{prefix}/parent")
 app.include_router(child_router, prefix=f"{prefix}/child")
 
+# Mount media folder
+app.mount("/media", StaticFiles(directory="media"), name="media")
 
 # Enable CORS
 app.add_middleware(

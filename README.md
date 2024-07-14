@@ -43,3 +43,9 @@ alembic upgrade head
 ```bash
 uvicorn main:app --reload
 ```
+
+### API Documentation:
+
+```bash
+http://127.0.0.1:8000/docs
+```
